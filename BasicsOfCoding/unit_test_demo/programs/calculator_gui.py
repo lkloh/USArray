@@ -31,9 +31,14 @@ class CalculatorGUI:
 
 	def get_first_num(self, event):
 		self.firstnum = event
+		self.bn_firstnum.disconnect(self.cid_firstnum)
 
 	def get_second_num(self, event):
 		self.secondnum = event
+
+	def disconnect_all(self, event):
+		self.bn_secondnum.disconnect(self.cid_secondnum)
+		self.bn_firstnum.disconnect(self.cid_firstnum)
 
 	def compute(self, event):
 		if self.operation != '' and self.firstnum != '' and self.secondnum != '':
