@@ -24,3 +24,7 @@ class calculatorModel(unittest.TestCase):
 # ############################################################################### #
 
 
+class calculatorGUI(unittest.TestCase):
+
+	def test_type(self):
+		pass
