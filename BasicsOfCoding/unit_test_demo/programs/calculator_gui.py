@@ -13,7 +13,16 @@ class CalculatorGUI:
 		py.show()
 
 	def save_action(self, event):
-		print event
+		operation = ''
+		if event.inaxes==self.axs['add']:
+			operation = 'add'
+		elif event.inaxes==self.axs['subtract']:
+			operation == 'subtract'
+		elif event.inaxes==self.axs['times']:
+			operation = 'times'
+		elif event.inaxes==self.axs['divide']:
+			operation = 'divide'
+		self.operation = operation
 
 	def connect_buttons(self):
 		"""add button"""
