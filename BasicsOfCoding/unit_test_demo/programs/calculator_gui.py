@@ -14,9 +14,9 @@ class CalculatorGUI:
 		py.show()
 
 	def set_defaults(self):
-		self.firstnum = 1
-		self.secondnum = 1
-		self.operation = 'add'
+		self.firstnum = ''
+		self.secondnum = ''
+		self.operation = ''
 
 	def save_action(self, event):
 		if event.inaxes==self.axs['add']:
@@ -36,8 +36,16 @@ class CalculatorGUI:
 		self.secondnum = event
 
 	def compute(self, event):
-		if self.operation == 'add':
-			print add(int(self.firstnum), int(self.secondnum))
+		if self.operation != '' and self.firstnum != '' and self.secondnum != '':
+			if self.operation == 'add':
+				answer = add(int(self.firstnum), int(self.secondnum))
+			elif self.operation == 'subtract':
+				answer = subtract(int(self.firstnum), int(self.secondnum))
+			elif self.operation == 'times':
+				answer = times(int(self.firstnum), int(self.secondnum))
+			elif self.operation == 'divide':
+				answer = divide(int(self.firstnum), int(self.secondnum))
+			self.bn_ans.label.set_text(answer)
 
 	def connect_buttons(self):
 		"""add button"""
@@ -48,6 +56,7 @@ class CalculatorGUI:
 		self.bn_times = Button(self.axs['times'], 'x')
 		self.bn_divide = Button(self.axs['divide'], '/')
 		self.bn_equal = Button(self.axs['equal'],'=')
+		self.bn_ans = Button(self.axs['ans'],'ANS')
 
 		"""connecting"""
 		self.cid_add = self.bn_add.on_clicked(self.save_action)
@@ -63,7 +72,7 @@ class CalculatorGUI:
 
 		xx = 0.1
 		yy = 0.1
-		xm = 0.1
+		xm = 0.09
 		diff = 0.15
 
 		axs = {}
@@ -74,7 +83,7 @@ class CalculatorGUI:
 		axs['divide'] = fig.add_axes([3*xm, diff*4, xx, yy])
 		axs['secondnums'] = fig.add_axes([5*xm, diff*2, xx, 2*yy])
 		axs['equal'] = fig.add_axes([7*xm, diff*2, xx, yy])
-
+		axs['ans'] = fig.add_axes([9*xm, diff*2, xx, yy])
 
 		self.axs = axs
 		self.fig = fig 
