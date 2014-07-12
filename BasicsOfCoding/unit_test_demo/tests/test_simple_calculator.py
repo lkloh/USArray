@@ -1,7 +1,5 @@
 import unittest
-import sys, os, matplotlib
-import matplotlib.pyplot as py
-from unit_test_demo.programs import simple_calculator
+from unit_test_demo.programs.simple_calculator import add 
 
 
 # ############################################################################### #
@@ -11,7 +9,16 @@ from unit_test_demo.programs import simple_calculator
 class calculatorModel(unittest.TestCase):
 
     def test_add(self):
-        print 'lol'
+        self.assertEqual(add(3,4), 3+4)
+
+    def test_subtract(self):
+    	self.assertEqual(add(4,3), 4-3)
+
+    def test_multiply(self):
+    	self.assertEqual(multiply(3,4), 3*4)
+
+    def test_divide(self):
+    	self.assertEqual(divide(12,3), 12/float(3))
 
 # ############################################################################### #
 #                                     MODELS                                      #
