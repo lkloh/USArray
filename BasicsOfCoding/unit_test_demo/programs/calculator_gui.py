@@ -8,12 +8,17 @@ from programs.simple_calculator import add, subtract, times, divide
 class CalculatorGUI:
 
 	def __init__(self):
+		self.set_defaults()
 		self.setup_gui()
 		self.connect_buttons()
 		py.show()
 
+	def set_defaults(self):
+		self.firstnum = 1
+		self.secondnum = 1
+		self.operation = 'add'
+
 	def save_action(self, event):
-		operation = ''
 		if event.inaxes==self.axs['add']:
 			operation = 'add'
 		elif event.inaxes==self.axs['subtract']:
@@ -24,20 +29,34 @@ class CalculatorGUI:
 			operation = 'divide'
 		self.operation = operation
 
+	def get_first_num(self, event):
+		self.firstnum = event
+
+	def get_second_num(self, event):
+		self.secondnum = event
+
+	def compute(self, event):
+		if self.operation == 'add':
+			print add(int(self.firstnum), int(self.secondnum))
+
 	def connect_buttons(self):
 		"""add button"""
-		self.bn_firstnum = RadioButtons(self.axs['firstnums'], (1,2,3,4,5), active=1)
-		self.bn_secondnum = RadioButtons(self.axs['secondnums'], (1,2,3,4,5), active=1)
+		self.bn_firstnum = RadioButtons(self.axs['firstnums'], (1,2,3,4,5), active=0)
+		self.bn_secondnum = RadioButtons(self.axs['secondnums'], (1,2,3,4,5), active=0)
 		self.bn_add = Button(self.axs['add'], '+')
 		self.bn_subtract = Button(self.axs['subtract'], '-')
 		self.bn_times = Button(self.axs['times'], 'x')
 		self.bn_divide = Button(self.axs['divide'], '/')
+		self.bn_equal = Button(self.axs['equal'],'=')
 
 		"""connecting"""
 		self.cid_add = self.bn_add.on_clicked(self.save_action)
 		self.cid_subtract = self.bn_subtract.on_clicked(self.save_action)
 		self.cid_times = self.bn_times.on_clicked(self.save_action)
 		self.cid_divide = self.bn_divide.on_clicked(self.save_action)
+		self.cid_firstnum = self.bn_firstnum.on_clicked(self.get_first_num)
+		self.cid_secondnum = self.bn_secondnum.on_clicked(self.get_second_num)
+		self.cid_equal = self.bn_equal.on_clicked(self.compute)
 
 	def setup_gui(self):
 		fig = py.figure('Calculator')
@@ -48,12 +67,14 @@ class CalculatorGUI:
 		diff = 0.15
 
 		axs = {}
-		axs['firstnums'] = fig.add_axes([1*xm, diff*2, xx, yy])
-		axs['secondnums'] = fig.add_axes([3*xm, diff*2, xx, yy])
-		axs['add'] = fig.add_axes([2*xm, diff*1, xx, yy])
-		axs['subtract'] = fig.add_axes([2*xm, diff*2, xx, yy])
-		axs['times'] = fig.add_axes([2*xm, diff*3, xx, yy])
-		axs['divide'] = fig.add_axes([2*xm, diff*4, xx, yy])
+		axs['firstnums'] = fig.add_axes([1*xm, diff*2, xx, 2*yy])
+		axs['add'] = fig.add_axes([3*xm, diff*1, xx, yy])
+		axs['subtract'] = fig.add_axes([3*xm, diff*2, xx, yy])
+		axs['times'] = fig.add_axes([3*xm, diff*3, xx, yy])
+		axs['divide'] = fig.add_axes([3*xm, diff*4, xx, yy])
+		axs['secondnums'] = fig.add_axes([5*xm, diff*2, xx, 2*yy])
+		axs['equal'] = fig.add_axes([7*xm, diff*2, xx, yy])
+
 
 		self.axs = axs
 		self.fig = fig 
