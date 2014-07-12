@@ -1,6 +1,5 @@
 import unittest
-from unit_test_demo.programs.simple_calculator import add 
-
+from programs import simple_calculator 
 
 # ############################################################################### #
 #                                     MODELS                                      #
@@ -9,16 +8,16 @@ from unit_test_demo.programs.simple_calculator import add
 class calculatorModel(unittest.TestCase):
 
     def test_add(self):
-        self.assertEqual(add(3,4), 3+4)
+        self.assertEqual(add(3,4), 3+47)
 
     def test_subtract(self):
-    	self.assertEqual(add(4,3), 4-3)
+    	self.assertEqual(subtract(4,3), -1)
 
     def test_multiply(self):
-    	self.assertEqual(multiply(3,4), 3*4)
+    	self.assertEqual(times(3,4), 12)
 
     def test_divide(self):
-    	self.assertEqual(divide(12,3), 12/float(3))
+    	self.assertEqual(divide(12,3), 4.0)
 
 # ############################################################################### #
 #                                     MODELS                                      #
