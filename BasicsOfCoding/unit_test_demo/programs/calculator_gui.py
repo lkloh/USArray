@@ -25,6 +25,7 @@ class CalculatorGUI:
 
 	def save_action(self, event):
 		self.bn_firstnum.active = False
+
 		if self.operation == '':
 			if event.inaxes==self.axs['add']:
 				self.operation = 'add'
@@ -41,6 +42,11 @@ class CalculatorGUI:
 			self.selected_firstnum = True
 
 	def get_second_num(self, event):
+		self.bn_add.disconnect(self.cid_add)
+		self.bn_subtract.disconnect(self.cid_subtract)
+		self.bn_times.disconnect(self.cid_times)
+		self.bn_divide.disconnect(self.cid_divide)
+		
 		if self.selected_secondnum == False:
 			self.secondnum = event
 			self.selected_secondnum = True
@@ -60,6 +66,8 @@ class CalculatorGUI:
 		py.close('all')
 		
 	def compute(self, event):
+		self.bn_secondnum.active = False
+
 		if self.operation != '' and self.firstnum != '' and self.secondnum != '':
 			if self.operation == 'add':
 				answer = add(int(self.firstnum), int(self.secondnum))
