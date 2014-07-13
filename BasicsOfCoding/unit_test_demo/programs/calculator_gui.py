@@ -36,9 +36,14 @@ class CalculatorGUI:
 	def get_second_num(self, event):
 		self.secondnum = event
 
-	def disconnect_all(self, event):
+	def disconnect_all(self):
 		self.bn_secondnum.disconnect(self.cid_secondnum)
 		self.bn_firstnum.disconnect(self.cid_firstnum)
+		self.bn_add.disconnect(self.cid_add)
+
+	def quitting(self, event):
+		py.close('all')
+		self.disconnect_all()
 
 	def compute(self, event):
 		if self.operation != '' and self.firstnum != '' and self.secondnum != '':
@@ -61,7 +66,8 @@ class CalculatorGUI:
 		self.bn_times = Button(self.axs['times'], 'x')
 		self.bn_divide = Button(self.axs['divide'], '/')
 		self.bn_equal = Button(self.axs['equal'],'=')
-		self.bn_ans = Button(self.axs['ans'],'ANS')
+		self.bn_ans = Button(self.axs['ans'],'Answer')
+		self.bn_quit = Button(self.axs['quit'],'Quit')
 
 		"""connecting"""
 		self.cid_add = self.bn_add.on_clicked(self.save_action)
@@ -71,6 +77,7 @@ class CalculatorGUI:
 		self.cid_firstnum = self.bn_firstnum.on_clicked(self.get_first_num)
 		self.cid_secondnum = self.bn_secondnum.on_clicked(self.get_second_num)
 		self.cid_equal = self.bn_equal.on_clicked(self.compute)
+		self.cid_quit = self.bn_quit.on_clicked(self.quitting)
 
 	def setup_gui(self):
 		fig = py.figure('Calculator')
@@ -89,6 +96,7 @@ class CalculatorGUI:
 		axs['secondnums'] = fig.add_axes([5*xm, diff*2, xx, 2*yy])
 		axs['equal'] = fig.add_axes([7*xm, diff*2, xx, yy])
 		axs['ans'] = fig.add_axes([9*xm, diff*2, xx, yy])
+		axs['quit'] = fig.add_axes([5*xm, diff*6, xx, yy])
 
 		self.axs = axs
 		self.fig = fig 
