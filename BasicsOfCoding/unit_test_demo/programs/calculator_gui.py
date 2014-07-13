@@ -14,33 +14,36 @@ class CalculatorGUI:
 		py.show()
 
 	def set_defaults(self):
-		self.firstnum = ''
-		self.secondnum = ''
+		self.firstnum = '1'
+		self.selected_firstnum = False
+		self.secondnum = '1'
+		self.selected_secondnum = False
 		self.operation = ''
 
-	def save_action(self, event):
-		self.bn_firstnum.disconnect(self.cid_firstnum)
+	def reset(self, event):
+		self.set_defaults()
 
-		if event.inaxes==self.axs['add']:
-			operation = 'add'
-		elif event.inaxes==self.axs['subtract']:
-			operation == 'subtract'
-		elif event.inaxes==self.axs['times']:
-			operation = 'times'
-		elif event.inaxes==self.axs['divide']:
-			operation = 'divide'
-		self.operation = operation
+	def save_action(self, event):
+		self.bn_firstnum.active = False
+		if self.operation == '':
+			if event.inaxes==self.axs['add']:
+				self.operation = 'add'
+			elif event.inaxes==self.axs['subtract']:
+				self.operation == 'subtract'
+			elif event.inaxes==self.axs['times']:
+				self.operation = 'times'
+			elif event.inaxes==self.axs['divide']:
+				self.operation = 'divide'
 
 	def get_first_num(self, event):
-		self.firstnum = event
+		if self.selected_firstnum == False:
+			self.firstnum = event
+			self.selected_firstnum = True
 
 	def get_second_num(self, event):
-		self.bn_add.disconnect(self.cid_add)
-		self.bn_subtract.disconnect(self.cid_subtract)
-		self.bn_times.disconnect(self.cid_times)
-		self.bn_divide.disconnect(self.cid_divide)
-		
-		self.secondnum = event
+		if self.selected_secondnum == False:
+			self.secondnum = event
+			self.selected_secondnum = True
 
 	def disconnect_all(self):
 		self.bn_secondnum.disconnect(self.cid_secondnum)
@@ -79,6 +82,7 @@ class CalculatorGUI:
 		self.bn_equal = Button(self.axs['equal'],'=')
 		self.bn_ans = Button(self.axs['ans'],'Answer')
 		self.bn_quit = Button(self.axs['quit'],'Quit')
+		self.bn_reset = Button(self.axs['reset'],'Reset')
 
 		"""connecting"""
 		self.cid_add = self.bn_add.on_clicked(self.save_action)
@@ -89,6 +93,7 @@ class CalculatorGUI:
 		self.cid_secondnum = self.bn_secondnum.on_clicked(self.get_second_num)
 		self.cid_equal = self.bn_equal.on_clicked(self.compute)
 		self.cid_quit = self.bn_quit.on_clicked(self.quitting)
+		self.cid_reset = self.bn_reset.on_clicked(self.reset)
 
 	def setup_gui(self):
 		fig = py.figure('Calculator')
@@ -107,7 +112,8 @@ class CalculatorGUI:
 		axs['secondnums'] = fig.add_axes([5*xm, diff*2, xx, 2*yy])
 		axs['equal'] = fig.add_axes([7*xm, diff*2, xx, yy])
 		axs['ans'] = fig.add_axes([9*xm, diff*2, xx, yy])
-		axs['quit'] = fig.add_axes([5*xm, diff*6, xx, yy])
+		axs['quit'] = fig.add_axes([5*xm, diff*5, xx, yy])
+		axs['reset'] = fig.add_axes([7*xm, diff*5, xx, yy])
 
 		self.axs = axs
 		self.fig = fig 
