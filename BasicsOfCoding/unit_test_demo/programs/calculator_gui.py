@@ -19,6 +19,8 @@ class CalculatorGUI:
 		self.operation = ''
 
 	def save_action(self, event):
+		self.bn_firstnum.disconnect(self.cid_firstnum)
+
 		if event.inaxes==self.axs['add']:
 			operation = 'add'
 		elif event.inaxes==self.axs['subtract']:
@@ -31,20 +33,29 @@ class CalculatorGUI:
 
 	def get_first_num(self, event):
 		self.firstnum = event
-		self.bn_firstnum.disconnect(self.cid_firstnum)
 
 	def get_second_num(self, event):
+		self.bn_add.disconnect(self.cid_add)
+		self.bn_subtract.disconnect(self.cid_subtract)
+		self.bn_times.disconnect(self.cid_times)
+		self.bn_divide.disconnect(self.cid_divide)
+		
 		self.secondnum = event
 
 	def disconnect_all(self):
 		self.bn_secondnum.disconnect(self.cid_secondnum)
 		self.bn_firstnum.disconnect(self.cid_firstnum)
 		self.bn_add.disconnect(self.cid_add)
+		self.bn_subtract.disconnect(self.cid_subtract)
+		self.bn_times.disconnect(self.cid_times)
+		self.bn_divide.disconnect(self.cid_divide)
+		self.bn_equal.disconnect(self.cid_equal)
+		#self.bn_quit.disconnect(self.cid_quit)
 
 	def quitting(self, event):
-		py.close('all')
 		self.disconnect_all()
-
+		py.close('all')
+		
 	def compute(self, event):
 		if self.operation != '' and self.firstnum != '' and self.secondnum != '':
 			if self.operation == 'add':
