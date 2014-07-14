@@ -1,5 +1,6 @@
 import unittest
 from programs.simple_calculator import add, subtract, times, divide 
+from programs.calculator_gui import CalculatorGUI
 
 # ############################################################################### #
 #                                     MODELS                                      #
@@ -24,7 +25,14 @@ class calculatorModel(unittest.TestCase):
 # ############################################################################### #
 
 
-class calculatorGUI(unittest.TestCase):
+class calculatorView(unittest.TestCase):
 
-	def test_type(self):
+	def test_get_numbers(self):
 		pass
+
+
+
+
+
+
+
