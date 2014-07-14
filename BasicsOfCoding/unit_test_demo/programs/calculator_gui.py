@@ -21,6 +21,14 @@ class CalculatorGUI:
 	def reset(self, event):
 		self.bn_firstnum = RadioButtons(self.axs['firstnums'], (1,2,3,4,5), active=0)
 		self.bn_secondnum = RadioButtons(self.axs['secondnums'], (1,2,3,4,5), active=0)
+		self.cid_firstnum = self.bn_firstnum.on_clicked(self.get_first_num)
+		self.cid_secondnum = self.bn_secondnum.on_clicked(self.get_second_num)
+
+		self.cid_add = self.bn_add.on_clicked(self.save_action)
+		self.cid_subtract = self.bn_subtract.on_clicked(self.save_action)
+		self.cid_times = self.bn_times.on_clicked(self.save_action)
+		self.cid_divide = self.bn_divide.on_clicked(self.save_action)
+
 		self.bn_ans.label.set_text('Answer')
 
 		self.set_defaults()
@@ -39,9 +47,7 @@ class CalculatorGUI:
 				self.operation = 'divide'
 
 	def get_first_num(self, event):
-		if ~self.bn_firstnum.active:
-			self.firstnum = event
-			self.selected_firstnum = True
+		self.firstnum = event
 
 	def get_second_num(self, event):
 		self.bn_add.disconnect(self.cid_add)
@@ -49,9 +55,7 @@ class CalculatorGUI:
 		self.bn_times.disconnect(self.cid_times)
 		self.bn_divide.disconnect(self.cid_divide)
 		
-		if ~self.bn_firstnum.active:
-			self.secondnum = event
-			self.selected_secondnum = True
+		self.secondnum = event
 
 	def disconnect_all(self):
 		self.bn_secondnum.disconnect(self.cid_secondnum)
@@ -61,7 +65,6 @@ class CalculatorGUI:
 		self.bn_times.disconnect(self.cid_times)
 		self.bn_divide.disconnect(self.cid_divide)
 		self.bn_equal.disconnect(self.cid_equal)
-		#self.bn_quit.disconnect(self.cid_quit)
 
 	def quitting(self, event):
 		self.disconnect_all()
