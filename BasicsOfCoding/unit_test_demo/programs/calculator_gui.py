@@ -33,6 +33,8 @@ class CalculatorGUI:
 
 		self.set_defaults()
 
+		event.canvas.draw()
+
 	def save_action(self, event):
 		self.bn_firstnum.active = False
 
@@ -83,6 +85,8 @@ class CalculatorGUI:
 			elif self.operation == 'divide':
 				answer = divide(int(self.firstnum), int(self.secondnum))
 			self.bn_ans.label.set_text(answer)
+
+		event.canvas.draw()
 
 	def connect_buttons(self):
 		"""add button"""
