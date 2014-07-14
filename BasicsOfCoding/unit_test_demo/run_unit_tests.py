@@ -1,5 +1,5 @@
 import unittest
-from test_simple_calculator import calculatorModel
+from unit_tests.test_simple_calculator import calculatorModel
 
 
 """setup"""
