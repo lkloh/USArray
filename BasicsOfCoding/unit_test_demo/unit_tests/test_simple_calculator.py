@@ -1,5 +1,6 @@
 import unittest
 import matplotlib
+import matplotlib.pyplot as py
 from programs.simple_calculator import add, subtract, times, divide 
 from programs.calculator_gui import CalculatorGUI
 
@@ -46,7 +47,8 @@ class calculatorView(unittest.TestCase):
         gui.compute(event_compute)
 
         # check get expected result 
-        self.assertEqual(gui.bn_ans.label == '12')
+        print gui.bn_ans.label.get_text()
+        self.assertEqual(gui.bn_ans.label.get_text(), '12')
 
 
 

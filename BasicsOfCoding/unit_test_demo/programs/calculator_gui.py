@@ -36,8 +36,6 @@ class CalculatorGUI:
 		event.canvas.draw()
 
 	def save_action(self, event):
-		print event
-
 		self.bn_firstnum.active = False
 
 		if self.operation == '':
@@ -75,8 +73,6 @@ class CalculatorGUI:
 		py.close('all')
 		
 	def compute(self, event):
-		print event
-
 		self.bn_secondnum.active = False
 
 		if self.operation != '' and self.firstnum != '' and self.secondnum != '':
