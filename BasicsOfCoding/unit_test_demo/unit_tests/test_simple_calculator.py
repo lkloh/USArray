@@ -47,8 +47,36 @@ class calculatorView(unittest.TestCase):
         gui.compute(event_compute)
 
         # check get expected result 
-        print gui.bn_ans.label.get_text()
         self.assertEqual(gui.bn_ans.label.get_text(), '12')
+
+    def test_firstnum_inactive_after_click(self):
+        gui = CalculatorGUI()
+        self.assertTrue(gui.bn_firstnum.active)
+
+        # click first number
+        gui.get_first_num(3)
+
+        # click the sort button
+        event_operation = matplotlib.backend_bases.MouseEvent('button_press_event', gui.fig.canvas, 203, 236)
+        gui.save_action(event_operation)
+
+        self.assertFalse(gui.bn_firstnum.active)
+
+    def test_operators_inactive_after_click(self):
+        gui = CalculatorGUI()
+        self.assertTrue(gui.bn_secondnum.active)
+
+        # click first number
+        gui.get_first_num(3)
+
+        # click the sort button
+        event_operation = matplotlib.backend_bases.MouseEvent('button_press_event', gui.fig.canvas, 203, 236)
+        gui.save_action(event_operation)
+
+        # click second number
+        gui.get_second_num(4)
+
+        self.assertFalse(gui.bn_secondnum.active)
 
 
 
