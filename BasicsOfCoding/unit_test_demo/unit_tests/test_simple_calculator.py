@@ -1,4 +1,5 @@
 import unittest
+import matplotlib
 from programs.simple_calculator import add, subtract, times, divide 
 from programs.calculator_gui import CalculatorGUI
 
@@ -25,10 +26,27 @@ class calculatorModel(unittest.TestCase):
 # ############################################################################### #
 
 
-class calculatorView(unittest.TestCase):
+class calculatorView(unittest.TestCase):    
+    
+    def test_three_times_four(self):
+        gui = CalculatorGUI()
 
-	def test_get_numbers(self):
-		pass
+        # click first number
+        gui.get_first_num(3)
+
+        # click the sort button
+        event_operation = matplotlib.backend_bases.MouseEvent('button_press_event', gui.fig.canvas, 203, 236)
+        gui.save_action(event_operation)
+
+        # click second number
+        gui.get_second_num(4)
+
+        # click = sign
+        event_compute = matplotlib.backend_bases.MouseEvent('button_press_event', gui.fig.canvas, 443, 164)
+        gui.compute(event_compute)
+
+        # check get expected result 
+        self.assertEqual(gui.bn_ans.label == '12')
 
 
 
