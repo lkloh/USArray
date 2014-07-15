@@ -7,6 +7,10 @@ from programs.simple_calculator import add, subtract, times, divide
 
 class CalculatorGUI:
 
+	# ########################################################################## #
+	#                                    SETUP                                   #
+	# ########################################################################## #
+
 	def __init__(self):
 		self.set_defaults()
 		self.setup_gui()
@@ -17,6 +21,63 @@ class CalculatorGUI:
 		self.firstnum = ''
 		self.secondnum = ''
 		self.operation = ''
+
+	def setup_gui(self):
+		fig = py.figure('Calculator')
+
+		xx = 0.1
+		yy = 0.1
+		xm = 0.09
+		diff = 0.15
+
+		axs = {}
+		axs['firstnums'] = fig.add_axes([1*xm, diff*2, xx, 2*yy])
+		axs['add'] = fig.add_axes([3*xm, diff*1, xx, yy])
+		axs['subtract'] = fig.add_axes([3*xm, diff*2, xx, yy])
+		axs['times'] = fig.add_axes([3*xm, diff*3, xx, yy])
+		axs['divide'] = fig.add_axes([3*xm, diff*4, xx, yy])
+		axs['secondnums'] = fig.add_axes([5*xm, diff*2, xx, 2*yy])
+		axs['equal'] = fig.add_axes([7*xm, diff*2, xx, yy])
+		axs['ans'] = fig.add_axes([9*xm, diff*2, xx, yy])
+		axs['quit'] = fig.add_axes([5*xm, diff*5, xx, yy])
+		axs['reset'] = fig.add_axes([7*xm, diff*5, xx, yy])
+
+		self.axs = axs
+		self.fig = fig 
+
+	def connect_buttons(self):
+		"""add button"""
+		self.bn_firstnum = RadioButtons(self.axs['firstnums'], (1,2,3,4,5), active=0)
+		self.bn_secondnum = RadioButtons(self.axs['secondnums'], (1,2,3,4,5), active=0)
+		self.bn_add = Button(self.axs['add'], '+')
+		self.bn_subtract = Button(self.axs['subtract'], '-')
+		self.bn_times = Button(self.axs['times'], 'x')
+		self.bn_divide = Button(self.axs['divide'], '/')
+		self.bn_equal = Button(self.axs['equal'],'=')
+		self.bn_ans = Button(self.axs['ans'],'Answer')
+		self.bn_quit = Button(self.axs['quit'],'Quit')
+		self.bn_reset = Button(self.axs['reset'],'Reset')
+
+		"""connecting"""
+		self.cid_add = self.bn_add.on_clicked(self.save_action)
+		self.cid_subtract = self.bn_subtract.on_clicked(self.save_action)
+		self.cid_times = self.bn_times.on_clicked(self.save_action)
+		self.cid_divide = self.bn_divide.on_clicked(self.save_action)
+		self.cid_firstnum = self.bn_firstnum.on_clicked(self.get_first_num)
+		self.cid_secondnum = self.bn_secondnum.on_clicked(self.get_second_num)
+		self.cid_equal = self.bn_equal.on_clicked(self.compute)
+		self.cid_quit = self.bn_quit.on_clicked(self.quitting)
+		self.cid_reset = self.bn_reset.on_clicked(self.reset)
+
+	# ########################################################################## #
+	#                                    SETUP                                   #
+	# ########################################################################## #
+
+
+
+	# ########################################################################## #
+	#                            BUTTON ACTIONS                                  #
+	# ########################################################################## #
 
 	def reset(self, event):
 		self.bn_firstnum = RadioButtons(self.axs['firstnums'], (1,2,3,4,5), active=0)
@@ -88,52 +149,11 @@ class CalculatorGUI:
 
 		event.canvas.draw()
 
-	def connect_buttons(self):
-		"""add button"""
-		self.bn_firstnum = RadioButtons(self.axs['firstnums'], (1,2,3,4,5), active=0)
-		self.bn_secondnum = RadioButtons(self.axs['secondnums'], (1,2,3,4,5), active=0)
-		self.bn_add = Button(self.axs['add'], '+')
-		self.bn_subtract = Button(self.axs['subtract'], '-')
-		self.bn_times = Button(self.axs['times'], 'x')
-		self.bn_divide = Button(self.axs['divide'], '/')
-		self.bn_equal = Button(self.axs['equal'],'=')
-		self.bn_ans = Button(self.axs['ans'],'Answer')
-		self.bn_quit = Button(self.axs['quit'],'Quit')
-		self.bn_reset = Button(self.axs['reset'],'Reset')
+	# ########################################################################## #
+	#                            BUTTON ACTIONS                                  #
+	# ########################################################################## #
 
-		"""connecting"""
-		self.cid_add = self.bn_add.on_clicked(self.save_action)
-		self.cid_subtract = self.bn_subtract.on_clicked(self.save_action)
-		self.cid_times = self.bn_times.on_clicked(self.save_action)
-		self.cid_divide = self.bn_divide.on_clicked(self.save_action)
-		self.cid_firstnum = self.bn_firstnum.on_clicked(self.get_first_num)
-		self.cid_secondnum = self.bn_secondnum.on_clicked(self.get_second_num)
-		self.cid_equal = self.bn_equal.on_clicked(self.compute)
-		self.cid_quit = self.bn_quit.on_clicked(self.quitting)
-		self.cid_reset = self.bn_reset.on_clicked(self.reset)
-
-	def setup_gui(self):
-		fig = py.figure('Calculator')
-
-		xx = 0.1
-		yy = 0.1
-		xm = 0.09
-		diff = 0.15
-
-		axs = {}
-		axs['firstnums'] = fig.add_axes([1*xm, diff*2, xx, 2*yy])
-		axs['add'] = fig.add_axes([3*xm, diff*1, xx, yy])
-		axs['subtract'] = fig.add_axes([3*xm, diff*2, xx, yy])
-		axs['times'] = fig.add_axes([3*xm, diff*3, xx, yy])
-		axs['divide'] = fig.add_axes([3*xm, diff*4, xx, yy])
-		axs['secondnums'] = fig.add_axes([5*xm, diff*2, xx, 2*yy])
-		axs['equal'] = fig.add_axes([7*xm, diff*2, xx, yy])
-		axs['ans'] = fig.add_axes([9*xm, diff*2, xx, yy])
-		axs['quit'] = fig.add_axes([5*xm, diff*5, xx, yy])
-		axs['reset'] = fig.add_axes([7*xm, diff*5, xx, yy])
-
-		self.axs = axs
-		self.fig = fig 
+	
 
 
 
