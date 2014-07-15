@@ -64,7 +64,6 @@ class calculatorView(unittest.TestCase):
 
     def test_operators_inactive_after_click(self):
         gui = CalculatorGUI()
-        self.assertTrue(gui.bn_secondnum.active)
 
         # click first number
         gui.get_first_num(3)
@@ -73,12 +72,16 @@ class calculatorView(unittest.TestCase):
         event_operation = matplotlib.backend_bases.MouseEvent('button_press_event', gui.fig.canvas, 203, 236)
         gui.save_action(event_operation)
 
+        self.assertEqual(gui.operation, 'times')
+
         # click second number
         gui.get_second_num(4)
 
-        self.assertFalse(gui.bn_secondnum.active)
+        # click the sort button again
+        event_operation = matplotlib.backend_bases.MouseEvent('button_press_event', gui.fig.canvas, 215,249)
+        gui.save_action(event_operation)
 
-
+        self.assertNotEqual(gui.operation, 'add')
 
 
 
