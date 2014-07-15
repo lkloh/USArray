@@ -20,6 +20,11 @@ Developing Software
 * [Sphinx](http://sphinx-doc.org/), a tool for creating online documentation easily
 * [Why use Github?](http://techcrunch.com/2012/07/14/what-exactly-is-github-anyway/)
 
+Open source software
+--------------------
+* [Python](https://www.python.org/)
+* [Enthough Canopy](https://store.enthought.com/downloads/), easy to install package for python
+
 Useful Seismology Tools
 -----------------------
 * [Obspy](http://aimbat.readthedocs.org/en/latest/), library for manipulating and processing seismology data
