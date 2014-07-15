@@ -21,6 +21,7 @@ Developing Software
 * [Why you must write good documentation](http://lukeplant.me.uk/blog/posts/docs-or-it-doesnt-exist/)
 * [Sphinx](http://sphinx-doc.org/), a tool for creating online documentation easily
 * Don't develop something complex in one go. Try to develop a simplified version, test it throughly, and then integrate it to the code you are developing. 
+* [Building an installer for your software](http://stackoverflow.com/questions/8680132/creating-nice-dmg-installer-for-mac-os-x)
 
 Speeding up code execution time
 -------------------------------
