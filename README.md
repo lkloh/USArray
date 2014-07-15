@@ -23,4 +23,4 @@ Developing Software
 Useful Seismology Tools
 -----------------------
 * [Obspy](http://aimbat.readthedocs.org/en/latest/), library for manipulating and processing seismology data
-* [AIMBAR](http://aimbat.readthedocs.org/en/latest/), picking teleseismic arrival times
+* [AIMBAT](http://aimbat.readthedocs.org/en/latest/), picking teleseismic arrival times
