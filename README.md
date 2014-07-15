@@ -3,6 +3,10 @@ USArray
 
 Course materials for [2011](http://www.iris.edu/hq/es_course/content/2011.html).
 
+Why learn all this?
+-------------------
+* [Why scientists and engineers must learn to program](http://cacm.acm.org/blogs/blog-cacm/166115-why-scientists-and-engineers-must-learn-programming/fulltext)
+
 Finding solutions to your questions
 -----------------------------------
 
