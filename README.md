@@ -8,3 +8,12 @@ Finding solutions to your questions
 
 * [How to ask questions the smart way.](http://catb.org/~esr/faqs/smart-questions.html)
 * [Stack Overflow](http://stackoverflow.com/), for computer science/programming related questions
+
+Developing Software
+-------------------
+* [Introduction to Github](https://github.com/pysmo/aimbat-docs/wiki/Introduction-to-Github)
+* [Why you must write good documentation](http://lukeplant.me.uk/blog/posts/docs-or-it-doesnt-exist/)
+
+Useful Seismology Tools
+-----------------------
+* 
