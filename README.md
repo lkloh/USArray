@@ -17,6 +17,7 @@ Developing Software
 -------------------
 * [Introduction to Github](https://github.com/pysmo/aimbat-docs/wiki/Introduction-to-Github)
 * [Why you must write good documentation](http://lukeplant.me.uk/blog/posts/docs-or-it-doesnt-exist/)
+* [Sphinx](http://sphinx-doc.org/), a tool for creating online documentation easily
 
 Useful Seismology Tools
 -----------------------
