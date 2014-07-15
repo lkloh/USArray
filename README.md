@@ -1,7 +1,7 @@
 USArray
 =======
 
-Course materials for [2011](http://www.iris.edu/hq/es_course/content/2011.html).
+Course materials for [2011](http://www.iris.edu/hq/es_course/content/2011.html). Announcement for 2014 [here](http://www.iris.edu/hq/short-courses/course/iris_earthscope_usarray_data_processing_and_analysis_short_course_2014).
 
 Why learn all this?
 -------------------
