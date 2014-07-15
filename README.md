@@ -20,6 +20,12 @@ Developing Software
 * [Sphinx](http://sphinx-doc.org/), a tool for creating online documentation easily
 * [Why use Github?](http://techcrunch.com/2012/07/14/what-exactly-is-github-anyway/)
 
+Speeding up code execution time
+-------------------------------
+* [High-Performance Computing](http://www.it.northwestern.edu/research/services/quest.html), most universities have supercomputers to run code faster, check with your department
+* [Parallel Computing](https://computing.llnl.gov/tutorials/parallel_comp/), run several jobs at the same time
+* Check for bottlenecks. What part of the code takes longest to execute? Try minimize the number of times that part is called/ do caching, etc. 
+
 Open source software
 --------------------
 * [Python](https://www.python.org/)
