@@ -24,3 +24,7 @@ Useful Seismology Tools
 -----------------------
 * [Obspy](http://aimbat.readthedocs.org/en/latest/), library for manipulating and processing seismology data
 * [AIMBAT](http://aimbat.readthedocs.org/en/latest/), picking teleseismic arrival times
+* [Seismic Analysis Code (SAC)](http://www.iris.edu/files/sac-manual/manual.html)
+* [Standing Order for Data (SOD)](http://www.seis.sc.edu/sod/)
+
+
