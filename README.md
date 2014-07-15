@@ -6,6 +6,7 @@ Course materials for [2011](http://www.iris.edu/hq/es_course/content/2011.html).
 Why learn all this?
 -------------------
 * [Why scientists and engineers must learn to program](http://cacm.acm.org/blogs/blog-cacm/166115-why-scientists-and-engineers-must-learn-programming/fulltext)
+* [How to learn programming without formal classes](http://www.catb.org/~esr/faqs/hacker-howto.html), i.e. how to become a hacker
 
 Finding solutions to your questions
 -----------------------------------
