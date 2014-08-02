@@ -103,7 +103,7 @@ class CalculatorGUI:
 			if event.inaxes==self.axs['add']:
 				self.operation = 'add'
 			elif event.inaxes==self.axs['subtract']:
-				self.operation == 'subtract'
+				self.operation = 'subtract'
 			elif event.inaxes==self.axs['times']:
 				self.operation = 'times'
 			elif event.inaxes==self.axs['divide']:
